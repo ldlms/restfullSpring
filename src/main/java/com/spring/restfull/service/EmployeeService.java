@@ -11,4 +11,6 @@ public interface EmployeeService {
 	List<Employee> getAllEmployees();
 
 	boolean isEmpty();
+
+	Employee getEmployeeById(long id);
 }

@@ -31,6 +31,7 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
 	}
 
+	// GET all Employees
 	@GetMapping
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		if (employeeService.isEmpty()) {
@@ -38,4 +39,11 @@ public class EmployeeController {
 		}
 		return new ResponseEntity<List<Employee>>(employeeService.getAllEmployees(), HttpStatus.OK);
 	}
+
+	// Find by id
+
+	public Employee getEmployeeById(long id) {
+		return employeeService.getEmployeeById(id);
+	}
+
 }
