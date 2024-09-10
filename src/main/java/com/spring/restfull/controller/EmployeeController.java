@@ -32,7 +32,10 @@ public class EmployeeController {
 	}
 
 	@GetMapping
-	public List<Employee> getAllEmployees() {
-		return employeeService.getAllEmployees();
+	public ResponseEntity<List<Employee>> getAllEmployees() {
+		if (employeeService.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.GONE);
+		}
+		return new ResponseEntity<List<Employee>>(employeeService.getAllEmployees(), HttpStatus.OK);
 	}
 }

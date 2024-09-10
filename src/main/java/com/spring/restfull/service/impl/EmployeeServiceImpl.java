@@ -32,4 +32,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeRepository.findAll();
 	}
 
+	@Override
+	public boolean isEmpty() {
+		if (employeeRepository.findAll().isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
