@@ -1,7 +1,6 @@
 package com.spring.restfull.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,13 +45,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee getEmployeeById(long id) {
 
-		Optional<Employee> employee = employeeRepository.findById(id);
-		if (employee.isPresent()) {
-			return employee.get();
-		} else {
-			throw new RessourceNotFound("employee", "id", id);
-		}
-
+		// Optional<Employee> employee = employeeRepository.findById(id);
+		// if (employee.isPresent()) {
+		// return employee.get();
+		// } else {
+		// throw new RessourceNotFound("employee", "id", id);
+		// }
+		return employeeRepository.findById(id).orElseThrow(() -> new RessourceNotFound("employee", "id", id));
 	}
 
 }
