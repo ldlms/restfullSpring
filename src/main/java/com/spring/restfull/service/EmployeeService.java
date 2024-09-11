@@ -13,4 +13,6 @@ public interface EmployeeService {
 	boolean isEmpty();
 
 	Employee getEmployeeById(Long id);
+
+	Employee updateEmployee(Employee employee, Long id);
 }
