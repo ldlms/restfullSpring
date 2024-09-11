@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import com.spring.restfull.model.Employee;
 import com.spring.restfull.service.EmployeeService;
 
 @RestController
-@RequestMapping("api/employees")
+@RequestMapping("api/employees/")
 public class EmployeeController {
 
 	private EmployeeService employeeService;
@@ -41,9 +42,10 @@ public class EmployeeController {
 	}
 
 	// Find by id
-
-	public Employee getEmployeeById(long id) {
-		return employeeService.getEmployeeById(id);
+	// le mapping ira chercher une url semblable a celle-ci :
+	// http://localhost:8080/api/employee/1
+	@GetMapping("{id}")
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) {
+		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id), HttpStatus.OK);
 	}
-
 }

@@ -43,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee getEmployeeById(long id) {
+	public Employee getEmployeeById(Long id) {
 
 		// Optional<Employee> employee = employeeRepository.findById(id);
 		// if (employee.isPresent()) {

@@ -12,5 +12,5 @@ public interface EmployeeService {
 
 	boolean isEmpty();
 
-	Employee getEmployeeById(long id);
+	Employee getEmployeeById(Long id);
 }
