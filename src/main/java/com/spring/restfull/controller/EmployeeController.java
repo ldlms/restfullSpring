@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import com.spring.restfull.model.Employee;
 import com.spring.restfull.service.EmployeeService;
 
 @RestController
-@RequestMapping("api/employees/")
+@RequestMapping("api/employees")
 public class EmployeeController {
 
 	private EmployeeService employeeService;
@@ -54,5 +55,12 @@ public class EmployeeController {
 	@PutMapping("{id}")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee, @PathVariable("id") Long id) {
 		return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
+	}
+
+	// deleta Employe
+	@DeleteMapping("{id}")
+	public ResponseEntity<String> deleteEmploye(@PathVariable("id") Long id) {
+		employeeService.deleteEmployee(id);
+		return new ResponseEntity<String>("Employee deleted succesfully", HttpStatus.OK);
 	}
 }
